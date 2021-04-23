@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.repairTitle {
+    display: flex;
+    justify-content: center;
+    padding: 6rem;
+    border: 1px solid red;
+    font-family: Avenir, Serif;
+    font-size: 3rem;
+    color: #134074;
+    height: 100%;
+}
+
+.optionContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option {
+    width: 25%;
+    font-family: Avenir, serif, sans-serif;
+    font-size: 1.5rem;
+    background-color: #EEF4ED;
+    color: #134074;
+    border: none;
+    border-right: 1px solid #8DA9C4;
+}
+
+.option:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
+
