@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./KitereparatieLogo-Kleur.png"
 import "./TopNavigation.css";
+import {Link} from "react-router-dom"
 
 const TopNavigation = () => {
 
@@ -14,7 +15,7 @@ const TopNavigation = () => {
                 <li><img src={logo} alt="logo" className="logo"/></li>
                 <li>Prijzen</li>
                 <li>Contact</li>
-                <li><button>Login</button></li>
+                <li><button><Link to="/login" className="login">Login</Link></button></li>
             </ul>
         </nav>
     );

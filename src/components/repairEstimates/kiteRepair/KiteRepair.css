@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    display: flex;
+    background-color: #8DA9C4;
+    height: 42rem;
+    overflow: hidden;
+}
+
+.repairPhoto {
+    border-radius: 2rem;
+    margin: 7rem;
+    width: 25rem;
+}
+
+.sideText {
+    margin: 7rem auto auto 1rem;
+}
+
+.sideText h3,
+.sideText p{
+    font-family: Avenir, sans-serif;
+    color: #134074;
+}
+
+.sideText h3 {
+    font-size: 2rem;
+}
+
+.sideText h1 {
+    color: #0DA300;
+    font-size: 2.5rem;
+    font-family: Avenir, sans-serif;
+}
+
+.options {
+    display: flex;
+}
+
+.options label {
+    font-family: Avenir, sans-serif;
+    color: #134074;
+    margin: auto 4rem auto 1rem;
+}
+
+.options input {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.secondaryForm {
+    margin-top: 1rem;
+    height: 18rem;
+    border: 1px solid #EEF4ED;
+    border-radius: 1rem;
+}
+.secondaryForm p {
+    margin: 1rem;
+}
+
+.secondaryForm input {
+    height: 2rem;
+    width: 3.5rem;
+    margin: 1rem;
+    border-radius: 0.3rem;
+    border: 1px solid grey;
+    font-family: Avenir, sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+
+.secondaryOptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.firstOption,
+.secondOption,
+.thirdOption {
+    width: 34%;
+    font-size: 1.2rem;
+    font-family: Avenir, serif, sans-serif;
+    color: #134074;
+    border: none;
+    height: 3rem;
+}
+
+.firstOption {
+    font-weight: bolder;
+    border-top-left-radius: 0.9rem;
+}
+
+.thirdOption {
+    border-top-right-radius: 0.9rem;
+}
+
+.calculateCosts {
+    position: absolute;
+    margin: 110px auto auto -4.7rem;
+    font-family: Avenir, Serif;
+    font-size: 1rem;
+    color: #134074;
+    padding: 0.8rem 2rem 0.8rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+
+
+

@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+.loginContainer {
+    max-width: 66%;
+    background-color: #8DA9C4;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.loginLogo {
+    width: 10rem;
+    height: 10rem;
+}
+
+.loginContainer h1 {
+    font-size: 2rem;
+    font-family: Avenir, sans-serif;
+    color: #134074;
+    margin: 1rem;
+}
+
+.socialButtons svg {
+    height: 3rem;
+    width: 3rem;
+    border: #134074 2px solid;
+    border-radius: 50%;
+    background-color: white;
+    padding: 0.5rem;
+    margin: 0 4rem 0 4rem;
+    color: #134074;
+}
+
+.socialButtons svg:hover {
+    background-color: #EEF4ED;
+    cursor: pointer;
+}
+
+.loginContainer p {
+    font-family: Avenir, sans-serif;
+    color: #134074;
+    padding: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginContainer input {
+    width: 25rem;
+    height: 4rem;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem;
+    font-family: Avenir, sans-serif;
+    font-size: 1.2rem;
+}
+
+.forgotPassword {
+    text-decoration: none;
+    color: #134074;
+    font-family: Avenir, sans-serif;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
+}
+
+.loginContainer button {
+    margin: 3rem;
+    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    font-family: Avenir, sans-serif;
+    font-size: 1.5rem;
+    color: #EEF4ED;
+    border: 1px solid #134074;
+    border-radius: 1rem;
+    background-color: #134074;
+    transition: all ease-in-out 0.2s;
+}
+
+.loginContainer button:hover {
+    background-color: #EEF4ED;
+    cursor: pointer;
+    color: #134074;
+}

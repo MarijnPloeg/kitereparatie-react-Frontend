@@ -1,18 +1,18 @@
 import React from "react";
-import TopNavigation from "./components/navigation/TopNavigation";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 import "./App.css";
-import HomeOptions from "./components/homeOptions/HomeOptions";
-import AboutUs from "./components/aboutUs/AboutUs";
-import RepairsAndPricing from "./components/repairsAndPricing/RepairsAndPricing";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
     return (
-        <div>
-            <TopNavigation/>
-            <HomeOptions />
-            <AboutUs />
-            <RepairsAndPricing />
-        </div>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={HomePage}/>
+                <Route path="/login" component={LoginPage}/>
+            </Switch>
+        </Router>
+
     );
 }
 

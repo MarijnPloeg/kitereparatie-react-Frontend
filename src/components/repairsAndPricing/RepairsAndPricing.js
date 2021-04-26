@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./RepairsAndPricing.css";
+import KiteRepair from "../repairEstimates/kiteRepair/KiteRepair";
 
 const RepairsAndPricing = () => {
     const [option, setOption] = useState("Kite");
@@ -14,7 +15,7 @@ const RepairsAndPricing = () => {
             </div>
             <p className="form">
                 {option === "Kite" && (
-                    <h1>Kite!</h1>
+                    <KiteRepair />
                 )}
                 {option === "Bar" && (
                     <h1>Bar</h1>

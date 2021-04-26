@@ -8,8 +8,7 @@
     display: flex;
     justify-content: center;
     padding: 6rem;
-    border: 1px solid red;
-    font-family: Avenir, Serif;
+    font-family: Avenir, Serif, sans-serif;
     font-size: 3rem;
     color: #134074;
     height: 100%;

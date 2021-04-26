@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import { useForm } from 'react-hook-form';
 import {Link} from "react-router-dom";
 import logo from "./KitereparatieLogo-Kleur.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faFacebookF, faApple, faGoogle} from "@fortawesome/free-brands-svg-icons";
+import "./LoginPage.css"
 
 const LoginPage = () => {
     const [page, changePage] = useState("Login");
@@ -15,12 +18,12 @@ const LoginPage = () => {
         <p>
             {page === "Login" && (
                 <section className="loginContainer">
-                    <img src={logo} alt=""/>
+                    <img className="loginLogo" src={logo} alt=""/>
                     <h1>Welkom terug!</h1>
                     <div className="socialButtons">
-                        <button>F</button>
-                        <button>G</button>
-                        <button>A</button>
+                        <svg><FontAwesomeIcon icon={faFacebookF} className={"facebookBtn"}/></svg>
+                        <svg><FontAwesomeIcon icon={faApple} className={"appleBtn"}/></svg>
+                        <svg><FontAwesomeIcon icon={faGoogle} className={"googleBtn"}/></svg>
                     </div>
                     <p>of login met je email adres:</p>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -39,8 +42,8 @@ const LoginPage = () => {
                                 {...register("wachtwoord")}
                             />
                         </label>
-                        <Link>Wachtwoord vergeten?</Link>
-                        <button type="submit">Inloggen</button>
+                        <Link className={"forgotPassword"}>Wachtwoord vergeten?</Link>
+                        <button type="submit">Login</button>
                     </form>
                 </section>
             )}
