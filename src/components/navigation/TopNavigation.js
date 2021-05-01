@@ -9,8 +9,8 @@ const TopNavigation = () => {
     return (
         <nav className="navContainer">
             <ul className="menuItems">
-                <li>Home</li>
-                <li>Over ons</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="#overons">Over ons</Link></li>
                 <li>Reparaties</li>
                 <li><img src={logo} alt="logo" className="logo"/></li>
                 <li>Prijzen</li>

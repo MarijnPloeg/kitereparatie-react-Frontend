@@ -27,12 +27,13 @@
     color: #134074;
     border: none;
     border-right: 1px solid #8DA9C4;
+    display: flex;
+    justify-content: center;
 }
 
 .option:hover {
     cursor: pointer;
-    text-decoration: underline;
-
+    background-color: #8DA9C4;
 }
 
 

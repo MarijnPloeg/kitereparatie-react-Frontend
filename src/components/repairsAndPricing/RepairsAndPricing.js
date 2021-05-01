@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./RepairsAndPricing.css";
 import KiteRepair from "../repairEstimates/kiteRepair/KiteRepair";
+import { KiteRepairProvider} from "../../context/KiteRepairContext";
 
 const RepairsAndPricing = () => {
     const [option, setOption] = useState("Kite");
@@ -13,9 +14,11 @@ const RepairsAndPricing = () => {
                 <button className="option" onClick={() => setOption("Wetsuit")}>Wetsuit</button>
                 <button className="option" onClick={() => setOption("Board")}>Board</button>
             </div>
-            <p className="form">
+            <form className="form">
                 {option === "Kite" && (
-                    <KiteRepair />
+                    <KiteRepairProvider>
+                        <KiteRepair/>
+                    </KiteRepairProvider>
                 )}
                 {option === "Bar" && (
                     <h1>Bar</h1>
@@ -26,7 +29,7 @@ const RepairsAndPricing = () => {
                 {option === "Board" && (
                     <h1>Board</h1>
                 )}
-            </p>
+            </form>
         </div>
     );
 };

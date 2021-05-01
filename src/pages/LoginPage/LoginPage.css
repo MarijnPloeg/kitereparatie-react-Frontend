@@ -4,16 +4,20 @@
     margin: 0;
 }
 
+.loginPage {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
 
 .loginContainer {
-    max-width: 66%;
-    background-color: #8DA9C4;
+    min-width: 65%;
+    background-color: #EEF4ED;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 .loginLogo {
@@ -21,7 +25,7 @@
     height: 10rem;
 }
 
-.loginContainer h1 {
+.loginTitle {
     font-size: 2rem;
     font-family: Avenir, sans-serif;
     color: #134074;
@@ -44,7 +48,7 @@
     cursor: pointer;
 }
 
-.loginContainer p {
+.loginText {
     font-family: Avenir, sans-serif;
     color: #134074;
     padding: 2rem;
@@ -77,11 +81,12 @@ form {
     text-decoration: underline;
 }
 
-.loginContainer button {
+.loginButton {
     margin: 3rem;
     padding: 0.5rem 3.5rem 0.5rem 3.5rem;
     font-family: Avenir, sans-serif;
     font-size: 1.5rem;
+    text-decoration: none;
     color: #EEF4ED;
     border: 1px solid #134074;
     border-radius: 1rem;
@@ -89,8 +94,19 @@ form {
     transition: all ease-in-out 0.2s;
 }
 
-.loginContainer button:hover {
+.loginButton:hover {
     background-color: #EEF4ED;
     cursor: pointer;
     color: #134074;
 }
+
+.sideRegistration {
+    background-color: #8DA9C4;
+    height: 100vh;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

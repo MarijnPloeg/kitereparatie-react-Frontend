@@ -16,7 +16,7 @@
 .menuItems li {
     text-decoration: none;
     margin: 0 4.8rem 0 4.8rem;
-    font-family: Avenir;
+    font-family: Avenir, sans-serif;
     font-weight: bolder;
     font-size: 1rem;
     color: #134074;
