@@ -1,23 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
+import axios from "axios";
 import { useForm } from 'react-hook-form';
 import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
 import logo from "./KitereparatieLogo-Kleur.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebookF, faApple, faGoogle} from "@fortawesome/free-brands-svg-icons";
-import AppleLogin from "react-apple-login";
-import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from "react-google-login";
 import "./LoginPage.css"
-import {GoogleButton} from "./socialButtons/GoogleButton";
-import {FacebookButton} from "./socialButtons/FacebookButton";
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
 
-
     function onSubmit(data) {
         console.log(data);
+
+        axios.post("http://localhost:8088/authenticate", {
+            email: data.email,
+            password: data.password
+        }).then(response => {
+            console.log("Succes!, response: ", response);
+        }).catch(error => {
+            console.log("Error!: ", error, data.email, data.password);
+        });
     }
 
 
@@ -30,8 +32,8 @@ const LoginPage = () => {
             <section className="loginContainer">
                 <Link to="/"><img className="loginLogo" src={logo} alt=""/></Link>
                 <h1 className={"loginTitle"}>Welkom terug!</h1>
-                <GoogleButton />
-                <FacebookButton />
+                {/*<GoogleButton />*/}
+                {/*<FacebookButton />*/}
                 <p className={"loginText"}>of login met je email adres:</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="email">
@@ -45,12 +47,12 @@ const LoginPage = () => {
                         <input
                             type="password"
                             id="password"
-                            placeholder="Wachtwoord"
-                            {...register("wachtwoord")}
+                            placeholder="password"
+                            {...register("password")}
                         />
                     </label>
                     <Link to="" className={"forgotPassword"}>Wachtwoord vergeten?</Link>
-                    <Link to="myRepairs"><button type="submit" className="loginButton">Login</button></Link>
+                    <button type="submit" className="loginButton">Login</button>
                 </form>
             </section>
             <section className="sideRegistration">
