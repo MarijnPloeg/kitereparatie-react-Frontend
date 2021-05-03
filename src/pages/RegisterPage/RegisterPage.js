@@ -10,7 +10,7 @@ import {faApple, faFacebookF, faGoogle} from "@fortawesome/free-brands-svg-icons
 
 const RegisterPage = () => {
     const {handleSubmit, register} = useForm();
-    let {newUser, setNewUser} = useState({firstname: "", lastname: "", email: "", password: ""});
+    let {newUser, setNewUser} = useState({firstname: '', lastname: '', email: '', password: ''});
 
     function onSubmit(data) {
         console.log(data);
@@ -21,15 +21,15 @@ const RegisterPage = () => {
             password: data.password
         };
 
-        axios.post("http://localhost:8088/customers", {
+        axios.post("http://localhost:8088/api/v1/registration", {
             firstname: data.username.split(' ').slice(0, -1).join(' '),
             lastname: data.username.split(' ').slice(-1).join(' '),
             email: data.email,
             password: data.password
         }).then(response => {
-            console.log(response);
+            console.log("Succes!, response: ", response);
         }).catch(error => {
-            console.log(error);
+            console.log("Error!: ", error);
         });
 
         console.log("newUser", newUser);

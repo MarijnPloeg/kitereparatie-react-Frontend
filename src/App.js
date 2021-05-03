@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import MyRepairsPage from "./pages/MyRepairsPage/MyRepairsPage"
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route exact path="/home" component={HomePage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/register" component={RegisterPage}/>
+                    <Route path="/myRepairs" component={MyRepairsPage}/>
                 </Switch>
             </AnimatePresence>
         </Router>
