@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from 'react-hook-form';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {motion} from "framer-motion";
 
 import logo from "./KitereparatieLogo-Kleur.png"
@@ -9,6 +9,7 @@ import "./LoginPage.css"
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
+    const history = useHistory();
 
     async function onSubmit(data) {
         console.table(data);
@@ -19,6 +20,9 @@ const LoginPage = () => {
                 password: data.password
             });
             console.log(res);
+            console.log(res.data.jwt);
+            localStorage.setItem("token", res.data.jwt);
+            history.push("/myRepairs");
         } catch (e) {
             console.log("Error with async function: ", e)
         }
