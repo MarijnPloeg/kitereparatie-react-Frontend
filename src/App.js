@@ -15,8 +15,8 @@ function App() {
                 <Switch>
                     <Route exact path="/home" component={HomePage}/>
                     <Route path="/login" component={LoginPage}/>
-                    <Route path="/register" component={RegisterPage}/>
                     <Route path="/myRepairs" component={MyRepairsPage}/>
+                    <Route path="/register" component={RegisterPage}/>
                 </Switch>
             </AnimatePresence>
         </Router>

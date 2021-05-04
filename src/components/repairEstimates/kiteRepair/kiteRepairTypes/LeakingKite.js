@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {KiteRepairContext} from "../../../../context/KiteRepairContext";
 
 export const LeakingKite = () => {
-    const [indication, setIndication] = useContext(KiteRepairContext);
+    const [setIndication] = useContext(KiteRepairContext);
     return (
         <>
             <div className="secondaryForm">

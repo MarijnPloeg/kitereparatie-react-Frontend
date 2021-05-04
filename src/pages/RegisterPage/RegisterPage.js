@@ -1,38 +1,32 @@
-import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import React, { useState} from "react";
 import axios from "axios";
+import {motion} from "framer-motion";
+import {Link, useHistory} from "react-router-dom";
 import {useForm} from 'react-hook-form';
 import "./RegisterPage.css"
-import {motion} from "framer-motion";
 import logo from "../LoginPage/KitereparatieLogo-Kleur.png";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faApple, faFacebookF, faGoogle} from "@fortawesome/free-brands-svg-icons";
 
 const RegisterPage = () => {
     const {handleSubmit, register} = useForm();
-    let {newUser, setNewUser} = useState({firstname: '', lastname: '', email: '', password: ''});
+    const history = useHistory();
+    const [registerSuccess, toggleRegisterSucces] = useState(false);
 
-    function onSubmit(data) {
-        console.log(data);
-        newUser ={
-            firstname: data.username.split(' ').slice(0, -1).join(' '),
-            lastname: data.username.split(' ').slice(-1).join(' '),
-            email: data.email,
-            password: data.password
-        };
-
-        axios.post("http://localhost:8088/api/v1/registration", {
-            firstname: data.username.split(' ').slice(0, -1).join(' '),
-            lastname: data.username.split(' ').slice(-1).join(' '),
-            email: data.email,
-            password: data.password
-        }).then(response => {
-            console.log("Succes!, response: ", response);
-        }).catch(error => {
-            console.log("Error!: ", error);
-        });
-
-        console.log("newUser", newUser);
+    async function onSubmit(data) {
+        console.table(data);
+        try {
+            const result = await axios.post("http://localhost:8088/api/v1/registration", {
+                firstname: data.username.split(' ').slice(0, -1).join(' '),
+                lastname: data.username.split(' ').slice(-1).join(' '),
+                email: data.email,
+                password: data.password
+            });
+            console.log(result);
+            toggleRegisterSucces(true);
+            setTimeout(() => {history.push("/login")}, 4000)
+        } catch (e) {
+            //TODO: Toon error message aan gebruiker
+            console.log(e)
+        }
     }
 
     return (
@@ -49,11 +43,12 @@ const RegisterPage = () => {
             <section className="loginContainer">
                 <Link to="/"><img className="loginLogo" src={logo} alt=""/></Link>
                 <h1 className={"loginTitle"}>Welkom bij kitereparatie!</h1>
-                <div className="socialButtons">
-                    <svg><FontAwesomeIcon icon={faFacebookF} className={"facebookBtn"}/></svg>
-                    <svg><FontAwesomeIcon icon={faApple} className={"appleBtn"}/></svg>
-                    <svg><FontAwesomeIcon icon={faGoogle} className={"googleBtn"}/></svg>
-                </div>
+                {/*TODO: Registratie verwerken via Social buttons*/}
+                {/*<div className="socialButtons">*/}
+                {/*    <svg><FontAwesomeIcon icon={faFacebookF} className={"facebookBtn"}/></svg>*/}
+                {/*    <svg><FontAwesomeIcon icon={faApple} className={"appleBtn"}/></svg>*/}
+                {/*    <svg><FontAwesomeIcon icon={faGoogle} className={"googleBtn"}/></svg>*/}
+                {/*</div>*/}
                 <p className={"loginText"}>of maak een account met je email adres:</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username">
@@ -79,6 +74,9 @@ const RegisterPage = () => {
                         />
                     </label>
                     <button type="submit" className="loginButton">Registreer</button>
+                    {registerSuccess === true &&
+                    <p className="registerSuccess">Registratie is gelukt, je word nu doorgestuurd naar de inlog
+                        pagina</p>}
                 </form>
             </section>
         </motion.div>

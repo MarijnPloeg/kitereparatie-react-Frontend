@@ -10,10 +10,10 @@ const Sidebar = () => {
                 <h2>Kitereparatie</h2>
             </div>
             <div className="sideBarContainer">
-                <a className="sidebarElement">Mijn reparaties</a>
-                <a className="sidebarElement">Reparatie aanmelden</a>
-                <a className="sidebarElement">Facturen</a>
-                <a className="sidebarElement">Contact</a>
+                <button className="sidebarElement">Mijn reparaties</button>
+                <button className="sidebarElement">Reparatie aanmelden</button>
+                <button className="sidebarElement">Facturen</button>
+                <button className="sidebarElement">Contact</button>
             </div>
         </div>
     );

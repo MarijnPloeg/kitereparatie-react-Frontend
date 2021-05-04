@@ -3,25 +3,26 @@ import axios from "axios";
 import { useForm } from 'react-hook-form';
 import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
+
 import logo from "./KitereparatieLogo-Kleur.png"
 import "./LoginPage.css"
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
 
-    function onSubmit(data) {
-        console.log(data);
+    async function onSubmit(data) {
+        console.table(data);
 
-        axios.post("http://localhost:8088/authenticate", {
-            email: data.email,
-            password: data.password
-        }).then(response => {
-            console.log("Succes!, response: ", response);
-        }).catch(error => {
-            console.log("Error!: ", error, data.email, data.password);
-        });
+        try {
+            const res = await axios.post("http://localhost:8088/authenticate", {
+                email: data.email,
+                password: data.password
+            });
+            console.log(res);
+        } catch (e) {
+            console.log("Error with async function: ", e)
+        }
     }
-
 
     return (
         <motion.div className="loginPage"
@@ -61,7 +62,6 @@ const LoginPage = () => {
                 <Link className="loginButton" to="/register">Registreer</Link>
             </section>
         </motion.div>
-
     );
 
 };
