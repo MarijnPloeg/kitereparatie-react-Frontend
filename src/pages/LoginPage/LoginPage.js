@@ -1,28 +1,31 @@
-import React from "react";
+import React, {useContext} from "react";
 import axios from "axios";
-import { useForm } from 'react-hook-form';
+import {get, useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";
 import {motion} from "framer-motion";
 
 import logo from "./KitereparatieLogo-Kleur.png"
 import "./LoginPage.css"
+import {UserContext} from "../../context/UserContext";
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
+    const {user, setUser} = useContext(UserContext);
     const history = useHistory();
 
     async function onSubmit(data) {
-        console.table(data);
-
         try {
             const res = await axios.post("http://localhost:8088/authenticate", {
                 email: data.email,
                 password: data.password
             });
-            console.log(res);
-            console.log(res.data.jwt);
+
+            // const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
+            // setUser(getUser.data);
+            // console.log(user)
             localStorage.setItem("token", res.data.jwt);
-            history.push("/myRepairs");
+            setTimeout((history.push("/myRepairs"), 5000));
+
         } catch (e) {
             console.log("Error with async function: ", e)
         }

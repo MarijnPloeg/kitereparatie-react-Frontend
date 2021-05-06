@@ -5,29 +5,13 @@
 }
 
 .sidebar {
-    background-color: #8DA9C4;
+    position: absolute;
+    bottom: 0;
+    background-color: #0B2545;
     width: 20rem;
-    height: 100vh;
+    height: 85vh;
 }
 
-.profileCard {
-    height: 10rem;
-    width: 16rem;
-    display: flex;
-}
-
-.profileCard img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 5rem;
-    margin: 2rem;
-}
-
-.profileCard h2 {
-    font-family: Avenir, sans-serif;
-    color: #134074;
-    margin-top: 3rem;
-}
 .sideBarContainer {
     display: flex;
     flex-direction: column;
@@ -36,11 +20,24 @@
 .sidebarElement {
     font-family: Avenir, sans-serif;
     font-size: 1.3rem;
+    text-decoration: none;
     color: #EEF4ED;
     padding: 1.5rem 1rem 1.5rem 2rem;
 }
 
+.sidebarIcon {
+    margin-right: 2rem;
+}
+
+
 .sidebarElement:hover {
     background-color: #6496c1;
     cursor: pointer;
+}
+
+.logout {
+    font-family: Avenir, sans-serif;
+    color: #EEF4ED;
+    text-align: center;
+    padding-top: 45vh;
 }

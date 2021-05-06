@@ -1,0 +1,36 @@
+.topBarContainer {
+    width: 85rem;
+    height: 15vh;
+    margin-left: 20rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+.topBarContainer img {
+    max-width: 8rem;
+    margin: 1rem;
+}
+
+.welcomeMessage {
+    font-family: Avenir, sans-serif;
+    font-weight: lighter;
+    color: #0B2545;
+}
+
+.userName {
+    font-weight: bold;
+}
+
+.profilePicture {
+    position: absolute;
+    right: 0;
+    border-radius: 50%;
+    width: 7rem;
+}
+
+.profilePicture:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

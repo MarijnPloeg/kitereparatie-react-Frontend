@@ -1,20 +1,22 @@
 import React from "react";
-import logo from "./KitereparatieLogo-Kleur.png"
 import "./Sidebar.css"
 import {Link} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUser, faList, faFileInvoice, faPhone} from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <div className="profileCard">
-                <img src={logo} alt=""/>
-                <h2>Kitereparatie</h2>
-            </div>
             <div className="sideBarContainer">
-                <Link to="/myRepairs" className="sidebarElement">Mijn reparaties</Link>
-                <Link to="/createrepair" className="sidebarElement">Reparatie aanmelden</Link>
-                <Link className="sidebarElement">Facturen</Link>
-                <Link className="sidebarElement">Contact</Link>
+                <Link to="/profile" className="sidebarElement"><FontAwesomeIcon icon={faUser} className="sidebarIcon" />Mijn
+                    profiel</Link>
+                <Link to="/myRepairs" className="sidebarElement"><FontAwesomeIcon icon={faList} className="sidebarIcon"/>Mijn
+                    reparaties</Link>
+                <Link to="/createrepair" className="sidebarElement"><FontAwesomeIcon
+                    icon={faFileInvoice} className="sidebarIcon"/>Facturen</Link>
+                <Link to="/" className="sidebarElement"><FontAwesomeIcon
+                    icon={faPhone} className="sidebarIcon"/>Contact</Link>
+                <Link to="/home" className="logout">Uitloggen</Link>
             </div>
         </div>
     );

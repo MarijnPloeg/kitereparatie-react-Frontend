@@ -69,6 +69,7 @@
     position: absolute;
     left: 10rem;
     display: grid;
+    grid-gap: 1%;
     grid-template-rows: auto;
     grid-template-areas:
     "brand model"
@@ -89,6 +90,10 @@
     height: 3rem;
 }
 
+.inputLabel input[type="text"] {
+    margin-left: -0.5rem;
+}
+
 .inputBoxBrand {
     grid-area: brand;
 }
@@ -105,5 +110,6 @@
     position: absolute;
     grid-area: note;
     resize: none;
-    border: 0;
+    width: 100%;
+    min-height: 15rem;
 }
