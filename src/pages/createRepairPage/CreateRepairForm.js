@@ -1,20 +1,21 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {set, useForm} from "react-hook-form";
 //Styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import "./CreateRepairForm.css";
-import FabricRepair from "../../components/repairEstimates/kiteRepair/kiteRepairTypes/FabricRepair";
-import KiteRepair from "../../components/repairEstimates/kiteRepair/KiteRepair";
+import {RepairContext} from "../../context/Repair";
 
 
 const CreateRepairForm = () => {
     const [repairType, setRepairType] = useState(null);
     const {handleSubmit, register} = useForm();
+    const repair = useContext(RepairContext);
+    
 
     function onSubmit(data) {
-        console.log(data)
+        console.log(repair);
     }
 
     return (

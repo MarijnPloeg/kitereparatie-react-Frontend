@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./RepairsAndPricing.css";
 import KiteRepair from "../repairEstimates/kiteRepair/KiteRepair";
-import { KiteRepairProvider} from "../../context/KiteRepairContext";
+import { IndicationProvider} from "../../context/IndicationContext";
 
 const RepairsAndPricing = () => {
     const [option, setOption] = useState("Kite");
@@ -16,9 +16,9 @@ const RepairsAndPricing = () => {
             </div>
             <form className="form">
                 {option === "Kite" && (
-                    <KiteRepairProvider>
+                    <IndicationProvider>
                         <KiteRepair/>
-                    </KiteRepairProvider>
+                    </IndicationProvider>
                 )}
                 {option === "Bar" && (
                     <h1>Bar</h1>

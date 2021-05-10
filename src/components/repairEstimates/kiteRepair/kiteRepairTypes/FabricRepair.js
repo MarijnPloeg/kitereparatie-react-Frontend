@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {KiteRepairContext} from "../../../../context/KiteRepairContext";
+import {IndicationContext} from "../../../../context/IndicationContext";
 
 const FabricRepair = () => {
-    const setIndication = useContext(KiteRepairContext);
+    const setIndication = useContext(IndicationContext);
 
     return (
         <>

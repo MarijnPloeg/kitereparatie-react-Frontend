@@ -10,21 +10,30 @@ import MyRepairsPage from "./pages/MyRepairsPage/MyRepairsPage"
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import CreateRepairForm from "./pages/createRepairPage/CreateRepairForm";
 import {UserContext} from "./context/UserContext";
+import {AddressContext} from "./context/AddressContext";
 
 function App() {
-    const [user, setUser] = useState(null);
-    const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+    const [user, setUser] = useState({user:{}});
+    const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+
+    const [repair, setRepair] = useState(null);
+    const repairValue = useMemo(() => ({ repair, setRepair }), [repair, setRepair]);
+
+    const [address, setAddress] = useState({address: {}})
+    const addressValue = useMemo(() => ({address, setAddress}), [address, setAddress])
 
     return (
         <Router>
             <AnimatePresence exitBeforeEnter>
                 <Switch>
-                    <UserContext.Provider value={value}>
+                    <UserContext.Provider value={userValue}>
                         <Route exact path="/home" component={HomePage}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/myRepairs" component={MyRepairsPage}/>
                         <Route path="/register" component={RegisterPage}/>
-                        <Route path="/profile" component={ProfilePage}/>
+                        <AddressContext.Provider value={addressValue}>
+                            <Route path="/profile" component={ProfilePage}/>
+                        </AddressContext.Provider>
                         <Route path="/createRepair" component={CreateRepairForm}/>
                     </UserContext.Provider>
                 </Switch>

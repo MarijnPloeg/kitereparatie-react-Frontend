@@ -2,14 +2,14 @@ import React, {useState, useContext} from "react";
 //Images
 import kitephoto from "./images/Kite.JPG"
 import "./KiteRepair.css"
-import {KiteRepairContext} from "../../../context/KiteRepairContext";
+import {IndicationContext} from "../../../context/IndicationContext";
 import FabricRepair from "./kiteRepairTypes/FabricRepair";
 import {LeakingKite} from "./kiteRepairTypes/LeakingKite";
 
 const KiteRepair = () => {
 
     const [type, setType] = useState("")
-    const indication = useContext(KiteRepairContext);
+    const indication = useContext(IndicationContext);
 
     return (
         <div className="form">

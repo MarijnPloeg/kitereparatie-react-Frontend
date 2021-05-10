@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import axios from "axios";
-import {get, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";
 import {motion} from "framer-motion";
 
@@ -20,15 +20,19 @@ const LoginPage = () => {
                 password: data.password
             });
 
-            // const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
-            // setUser(getUser.data);
-            // console.log(user)
+            const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
             localStorage.setItem("token", res.data.jwt);
+            setUser(getUser.data);
             setTimeout((history.push("/myRepairs"), 5000));
 
         } catch (e) {
             console.log("Error with async function: ", e)
         }
+    }
+
+    function showUser() {
+        console.log(user)
+        setUser(user);
     }
 
     return (
@@ -61,6 +65,7 @@ const LoginPage = () => {
                     </label>
                     <Link to="" className={"forgotPassword"}>Wachtwoord vergeten?</Link>
                     <button type="submit" className="loginButton">Login</button>
+                    <button onClick={showUser} className="loginButton">Login</button>
                 </form>
             </section>
             <section className="sideRegistration">
