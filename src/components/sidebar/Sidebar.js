@@ -1,25 +1,49 @@
-import React from "react";
+import React, {useContext} from "react";
+import {UserContext} from "../../context/UserContext"
 import "./Sidebar.css"
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUser, faList, faFileInvoice, faPhone} from "@fortawesome/free-solid-svg-icons";
+import {faUser, faList, faFileInvoice, faPhone, faUsers, faUserCheck} from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
+    const user = useContext(UserContext);
+    const userRole = user.user.appUserRole;
+
+    function showUser() {
+        console.log(userRole)
+    }
+
     return (
         <div className="sidebar">
             <div className="sideBarContainer">
-                <Link to="/profile" className="sidebarElement"><FontAwesomeIcon icon={faUser} className="sidebarIcon" />Mijn
-                    profiel</Link>
-                <Link to="/myRepairs" className="sidebarElement"><FontAwesomeIcon icon={faList} className="sidebarIcon"/>Mijn
-                    reparaties</Link>
-                <Link to="/createrepair" className="sidebarElement"><FontAwesomeIcon
-                    icon={faFileInvoice} className="sidebarIcon"/>Facturen</Link>
-                <Link to="/" className="sidebarElement"><FontAwesomeIcon
-                    icon={faPhone} className="sidebarIcon"/>Contact</Link>
+                {userRole === "CUSTOMER" && (
+                    <>
+                        <Link to="/profile" className="sidebarElement"><FontAwesomeIcon icon={faUser}
+                                                                                        className="sidebarIcon"/>Mijn
+                            profiel</Link>
+                        <Link to="/myRepairs" className="sidebarElement"><FontAwesomeIcon icon={faList}
+                                                                                          className="sidebarIcon"/>Mijn
+                            reparaties</Link>
+                        <Link to="/createRepair" className="sidebarElement"><FontAwesomeIcon
+                            icon={faFileInvoice} className="sidebarIcon"/>Facturen</Link>
+                        <Link to="/" className="sidebarElement"><FontAwesomeIcon
+                            icon={faPhone} className="sidebarIcon"/>Contact</Link>
+                    </>
+                )}
+                {userRole === "MANAGER" && (
+                    <>
+                        <Link to="/profile" className="sidebarElement"><FontAwesomeIcon icon={faUser} className="sidebarIcon"/>Mijn profiel</Link>
+                        <Link to="/klanten" className="sidebarElement"><FontAwesomeIcon icon={faUsers} className="sidebarIcon"/>Klanten</Link>
+                        <Link to="/reparaties" className="sidebarElement"><FontAwesomeIcon icon={faList} className="sidebarIcon"/>Reparaties</Link>
+                        <Link to="/werknemers" className="sidebarElement"><FontAwesomeIcon icon={faUserCheck} className="sidebarIcon"/>Werknemers</Link>
+                        <Link to="/" className="sidebarElement"><FontAwesomeIcon icon={faPhone} className="sidebarIcon"/>Contact</Link>
+                    </>
+                )}
                 <Link to="/home" className="logout">Uitloggen</Link>
+
             </div>
         </div>
     );
-}
+};
 
 export default Sidebar;

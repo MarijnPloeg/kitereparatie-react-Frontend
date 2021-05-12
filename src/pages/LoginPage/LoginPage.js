@@ -30,11 +30,6 @@ const LoginPage = () => {
         }
     }
 
-    function showUser() {
-        console.log(user)
-        setUser(user);
-    }
-
     return (
         <motion.div className="loginPage"
                     initial={{x: 0}}
@@ -65,7 +60,6 @@ const LoginPage = () => {
                     </label>
                     <Link to="" className={"forgotPassword"}>Wachtwoord vergeten?</Link>
                     <button type="submit" className="loginButton">Login</button>
-                    <button onClick={showUser} className="loginButton">Login</button>
                 </form>
             </section>
             <section className="sideRegistration">

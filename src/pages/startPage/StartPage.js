@@ -2,10 +2,10 @@ import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import CreateRepairButton from "../../components/createRepairButton/CreateRepairButton";
 
-import "./loggedInPage.css";
+import "./StartPage.css";
 import TopBar from "../../components/topBar/TopBar";
 
-const MyRepairsPage = () => {
+const StartPage = () => {
     return (
         <>
             <TopBar />
@@ -15,4 +15,4 @@ const MyRepairsPage = () => {
     );
 }
 
-export default MyRepairsPage;
+export default StartPage;

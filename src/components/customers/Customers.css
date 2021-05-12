@@ -1,0 +1,58 @@
+.customersContainer {
+    margin: 5vh auto auto 22vw;
+}
+
+.customerList {
+    border: 1px solid #134074;
+    border-radius: 0.2rem;
+    width: 60vw;
+    height: 70vh;
+}
+
+.topBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #6496c1;
+    color: #EEF4ED;
+    font-family: Avenir, sans-serif;
+    justify-content: space-between;
+}
+
+.customerList input {
+    width: 9.5vw;
+    border-radius: 0.2rem;
+    border: none;
+    font-family: Avenir, sans-serif;
+    color: grey;
+    padding-left: 0.1rem;
+}
+
+.customerList input:focus {
+    color: #0B2545;
+}
+
+.customer {
+    font-family: Avenir, sans-serif;
+    color: #0B2545;
+    border-bottom: 1px solid #0B2545;
+    display: flex;
+}
+
+.customer p {
+    width: 25%;
+}
+
+.edit {
+    background-color: #EEF4ED;
+    color: #6496c1;
+    margin: 0.2rem auto 0.2rem 20%;
+    width: 1rem;
+    border: none;
+    font-size: 1.3rem;
+}
+
+.edit:hover {
+    color: #0B2545;
+    cursor: pointer;
+}
+

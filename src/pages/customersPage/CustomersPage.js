@@ -1,21 +1,18 @@
-import React, {useContext} from "react";
+import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-import {UserContext} from "../../context/UserContext";
 import TopBar from "../../components/topBar/TopBar";
+import Customers from "../../components/customers/Customers";
 import CreateRepairButton from "../../components/createRepairButton/CreateRepairButton";
-import UserForm from "../../components/userForm/UserForm";
 
-const ProfilePage = () => {
-    const {user} = useContext(UserContext);
-
+const customersPage = () => {
     return (
         <div>
             <TopBar/>
             <CreateRepairButton/>
             <Sidebar/>
-            <UserForm user={user}/>
+            <Customers/>
         </div>
     );
 }
 
-export default ProfilePage;
+export default customersPage;

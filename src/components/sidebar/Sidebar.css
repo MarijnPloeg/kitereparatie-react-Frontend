@@ -36,8 +36,10 @@
 }
 
 .logout {
+    position: absolute;
     font-family: Avenir, sans-serif;
     color: #EEF4ED;
     text-align: center;
     padding-top: 45vh;
+    margin: 30vh 10vh 10vh;
 }
