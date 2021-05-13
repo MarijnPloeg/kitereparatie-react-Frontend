@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
 import {useForm} from 'react-hook-form';
 import {Link, useHistory} from "react-router-dom";
@@ -10,15 +10,32 @@ import {UserContext} from "../../context/UserContext";
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
-    const {user, setUser} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
+    const [error, setError] = useState();
     const history = useHistory();
 
-    async function onSubmit(data) {
+    // Checking if user exists before authenticating the user. This way I can create unique error messages mapped by the back-end
+    async function checkEmail(data) {
+        try {
+            const res = await axios.get(`http://localhost:8088/users/${data.email}`)
+            if (res.status === 200) {
+                await authenticateUser(data);
+            }
+            console.log(res.status);
+        } catch (e) {
+            console.log(e.response);
+            setError(e.response.data);
+        }
+    }
+
+    async function authenticateUser(data) {
         try {
             const res = await axios.post("http://localhost:8088/authenticate", {
                 email: data.email,
                 password: data.password
             });
+
+            console.log(res)
 
             const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
             localStorage.setItem("token", res.data.jwt);
@@ -26,7 +43,8 @@ const LoginPage = () => {
             setTimeout((history.push("/myRepairs"), 5000));
 
         } catch (e) {
-            console.log("Error with async function: ", e)
+            console.log(e.response);
+            setError(e.response.data);
         }
     }
 
@@ -39,25 +57,25 @@ const LoginPage = () => {
             <section className="loginContainer">
                 <Link to="/"><img className="loginLogo" src={logo} alt=""/></Link>
                 <h1 className={"loginTitle"}>Welkom terug!</h1>
-                {/*<GoogleButton />*/}
-                {/*<FacebookButton />*/}
-                <p className={"loginText"}>of login met je email adres:</p>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                {/*TODO: Login met social media accounts (Google, Apple & FaceBook*/}
+                <p className={"loginText"}>Login met je email adres:</p>
+                <form onSubmit={handleSubmit(checkEmail)}>
                     <label htmlFor="email">
                         <input
                             type="email"
                             id="email"
-                            placeholder="email"
-                            {...register("email")} />
+                            placeholder="Email"
+                            {...register("email" ,{ required: true })} />
                     </label>
                     <label htmlFor="password">
                         <input
                             type="password"
                             id="password"
-                            placeholder="password"
-                            {...register("password")}
+                            placeholder="Wachtwoord"
+                            {...register("password" ,{ required: true })}
                         />
                     </label>
+                    {error && <p className="errorMessage">{error}</p>}
                     <Link to="" className={"forgotPassword"}>Wachtwoord vergeten?</Link>
                     <button type="submit" className="loginButton">Login</button>
                 </form>

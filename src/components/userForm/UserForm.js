@@ -19,12 +19,12 @@ const UserForm = (user) => {
             streetName: data.streetName
         });
 
-        postData();
+         postData(data);
     }
 
     async function postData(data) {
-        console.log("From post",user.user)
-        console.log("From post",address);
+        console.table("From post",user.user)
+        console.table("From post",address);
 
         try {
             console.log('Adres: ',address)
@@ -38,13 +38,13 @@ const UserForm = (user) => {
             });
             console.log(res);
         } catch (e) {
-            console.log("Error with async function: ", e)
+            console.log("Error with async function: ", e.response)
         }
     }
 
     return (
         <>
-            <form className="profileForm" onSubmit={handleSubmit(postData)}>
+            <form className="profileForm" onSubmit={handleSubmit(organizeData)}>
                 <label htmlFor="naam">Naam:</label>
                 <input type="text" id="naam" name="naam"
                        value={user.user.firstName + " " + user.user.lastName} {...register("name")}/>
@@ -53,15 +53,16 @@ const UserForm = (user) => {
                 <label htmlFor="streetName">Straat:</label>
                 <input type="text" id="streetName" name="streetName" value={address.streetName} {...register("streetName")}/>
                 <label htmlFor="houseNumber">Huisnummer:</label>
-                <input type="text" id="houseNumber" name="houseNumber"value={address.houseNumber} {...register("houseNumber")}/>
+                <input type="text" id="houseNumber" name="houseNumber" value={address.houseNumber} {...register("houseNumber")}/>
                 <label htmlFor="postalCode">Postcode:</label>
-                <input type="text" id="postalCode" name="postalCode"value={address.postalCode}{...register("postalCode")}/>
+                <input type="text" id="postalCode" name="postalCode" value={address.postalCode}{...register("postalCode")}/>
                 <label htmlFor="city">Stad:</label>
-                <input type="text" id="city" name="city"value={address.city}{...register("city")}/>
+                <input type="text" id="city" name="city" value={address.city}{...register("city")}/>
                 <label htmlFor="state">Provincie:</label>
-                <input type="text" id="state" name="state"value={address.state}{...register("state")}/>
+                <input type="text" id="state" name="state" value={address.state}{...register("state")}/>
                 <label htmlFor="country">Land:</label>
-                <input type="text" id="country" name="country"value={address.country}{...register("country")}/>
+                <input type="text" id="country" name="country" value={address.country}{...register("country")}/>
+                {/*TODO: Saving to POST request and Update to PUT request*/}
                 <button type="submit" className="updateButton">Update</button>
                 <button type="submit" className="updateButton">Save</button>
             </form>

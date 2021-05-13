@@ -7,7 +7,8 @@ import "./RegisterPage.css"
 import logo from "../LoginPage/KitereparatieLogo-Kleur.png";
 
 const RegisterPage = () => {
-    const {handleSubmit, register} = useForm();
+    const {handleSubmit, register, formState: {errors}} = useForm();
+    const [error, setError] = useState();
     const history = useHistory();
     const [registerSuccess, toggleRegisterSucces] = useState(false);
 
@@ -24,8 +25,7 @@ const RegisterPage = () => {
             toggleRegisterSucces(true);
             setTimeout(() => {history.push("/login")}, 4000)
         } catch (e) {
-            //TODO: Toon error message aan gebruiker
-            console.log(e)
+            setError((e.response.data.message))
         }
     }
 
@@ -44,35 +44,35 @@ const RegisterPage = () => {
                 <Link to="/"><img className="loginLogo" src={logo} alt=""/></Link>
                 <h1 className={"loginTitle"}>Welkom bij kitereparatie!</h1>
                 {/*TODO: Registratie verwerken via Social buttons*/}
-                {/*<div className="socialButtons">*/}
-                {/*    <svg><FontAwesomeIcon icon={faFacebookF} className={"facebookBtn"}/></svg>*/}
-                {/*    <svg><FontAwesomeIcon icon={faApple} className={"appleBtn"}/></svg>*/}
-                {/*    <svg><FontAwesomeIcon icon={faGoogle} className={"googleBtn"}/></svg>*/}
-                {/*</div>*/}
-                <p className={"loginText"}>of maak een account met je email adres:</p>
+                <p className={"loginText"}>Maak account aan met je email adres:</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username">
                         <input
                             type="text"
                             id="username"
                             placeholder="Naam"
-                            {...register("username")} />
+                            {...register("username", {required: true})} />
                     </label>
                     <label htmlFor="email">
                         <input
                             type="email"
                             id="email"
                             placeholder="Email"
-                            {...register("email")} />
+                            {...register("email", {required: true})} />
                     </label>
                     <label htmlFor="password">
                         <input
                             type="password"
                             id="password"
                             placeholder="Wachtwoord"
-                            {...register("password")}
+                            {...register("password", {
+                                required: true,
+                                pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+                            })}
                         />
                     </label>
+                    {errors.password && errors.password.type === "pattern" && <span className="errorMessage">Je wachtwoord moet minimaal 8 karakters, 1 letter en 1 nummer hebben!</span>}
+                    {error && <p className="errorMessage">{error}</p>}
                     <button type="submit" className="loginButton">Registreer</button>
                     {registerSuccess === true &&
                     <p className="registerSuccess">Registratie is gelukt, je word nu doorgestuurd naar de inlog

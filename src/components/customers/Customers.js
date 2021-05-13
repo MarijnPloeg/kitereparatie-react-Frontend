@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Customer from "../customer/Customer";
 import axios from "axios";
 
 // Styling
 import "./Customers.css";
+
 const Customers = () => {
     const [customers, setCustomers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +13,8 @@ const Customers = () => {
     async function fetchCustomers() {
         try {
             const data = await axios.get(url);
-            setCustomers(data.data)
+            setCustomers(data.data);
+            console.log(data.data)
         } catch (e) {
             console.log(e)
         }
@@ -38,7 +40,7 @@ const Customers = () => {
                        return val;
                    }
                 }).map((val, key) => {
-                    return <Customer name={val.firstName + " " + val.lastName} email={val.email} address={val.address} />
+                    return <Customer user={val} name={val.firstName + " " + val.lastName} email={val.email} />
                 }
                 )}
             </div>

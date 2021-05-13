@@ -42,7 +42,7 @@ function App() {
 
                             <selectedUserContext.Provider value={selectedUserValue}>
                                 <Route path="/klanten" component={ClientsPage}/>
-                                <Route path="/klant" component={EditClient}></Route>
+                                <Route path="/klant" component={EditClient} />
                             </selectedUserContext.Provider>
                         </AddressContext.Provider>
                         <Route path="/createRepair" component={CreateRepairForm}/>
