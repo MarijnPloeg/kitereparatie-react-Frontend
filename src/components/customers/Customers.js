@@ -14,7 +14,6 @@ const Customers = () => {
         try {
             const data = await axios.get(url);
             setCustomers(data.data);
-            console.log(data.data)
         } catch (e) {
             console.log(e)
         }
@@ -31,17 +30,26 @@ const Customers = () => {
                     <p>Naam</p>
                     <p>Email</p>
                     <p>Adres</p>
-                    <input type="text" placeholder="Zoeken..." onfocus="this.placeholder = ''" onChange={(e) => setSearchTerm(e.target.value)}/>
+                    <input type="text" placeholder="Zoeken..." onfocus="this.placeholder = ''"
+                           onChange={(e) => setSearchTerm(e.target.value)}/>
                 </div>
                 {customers.filter((val) => {
-                   if (searchTerm === "") {
-                       return val;
-                   } else if (val.firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
-                       return val;
-                   }
+                    if (searchTerm === "") {
+                        return val;
+                    } else if (val.firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return val;
+                    }
                 }).map((val, key) => {
-                    return <Customer user={val} name={val.firstName + " " + val.lastName} email={val.email} />
-                }
+                    let address = val.address;
+                    let streetName;
+                    if (address === null) {
+                        streetName = "";
+                    } else {
+                        streetName = address.streetName + " " + address.houseNumber + ", " + address.city;
+                    }
+                    return <Customer name={val.firstName + " " + val.lastName} email={val.email}
+                                     address={streetName}/>;
+                    }
                 )}
             </div>
         </div>

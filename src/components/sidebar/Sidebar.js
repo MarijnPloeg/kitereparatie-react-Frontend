@@ -39,7 +39,7 @@ const Sidebar = () => {
                         <Link to="/" className="sidebarElement"><FontAwesomeIcon icon={faPhone} className="sidebarIcon"/>Contact</Link>
                     </>
                 )}
-                <Link to="/home" className="logout">Uitloggen</Link>
+                <Link to="/home" className="logout"><button onClick={() => localStorage.clear()}>Uitloggen</button></Link>
 
             </div>
         </div>

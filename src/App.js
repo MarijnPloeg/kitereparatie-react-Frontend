@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
 import "./App.css";
@@ -14,9 +14,10 @@ import EditClient from "./components/editClient/EditClient";
 import {UserContext} from "./context/UserContext";
 import {AddressContext} from "./context/AddressContext";
 import {selectedUserContext} from "./context/selectedUser";
+import axios from "axios";
 
 function App() {
-    const [user, setUser] = useState({user:{}});
+    const [user, setUser] = useState(null);
     const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
     const [repair, setRepair] = useState(null);
@@ -27,6 +28,12 @@ function App() {
 
     const [selectedUser, setSelectedUser] = useState({selectedUser: {}})
     const selectedUserValue = useMemo(() => ({selectedUser, setSelectedUser}), [selectedUser, setSelectedUser])
+
+    useEffect(() => {
+        console.log(localStorage.getItem("user"))
+        setUser(localStorage.getItem("user"))
+    }, []);
+
 
     return (
         <Router>
@@ -39,7 +46,6 @@ function App() {
                         <Route path="/register" component={RegisterPage}/>
                         <AddressContext.Provider value={addressValue}>
                             <Route path="/profile" component={ProfilePage}/>
-
                             <selectedUserContext.Provider value={selectedUserValue}>
                                 <Route path="/klanten" component={ClientsPage}/>
                                 <Route path="/klant" component={EditClient} />

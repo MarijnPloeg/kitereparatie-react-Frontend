@@ -39,6 +39,7 @@ const LoginPage = () => {
 
             const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
             localStorage.setItem("token", res.data.jwt);
+            localStorage.setItem("user", JSON.stringify(getUser))
             setUser(getUser.data);
             setTimeout((history.push("/myRepairs"), 5000));
 
