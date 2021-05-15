@@ -1,0 +1,6 @@
+.profileOptions {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    row-gap: 1rem;
+}

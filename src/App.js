@@ -4,13 +4,15 @@ import {AnimatePresence} from "framer-motion";
 import "./App.css";
 //Pages
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/loginPage/LoginPage";
+import RegisterPage from "./pages/registerPage/RegisterPage";
 import StartPage from "./pages/startPage/StartPage"
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import ClientsPage from "./pages/customersPage/CustomersPage"
 import CreateRepairForm from "./pages/createRepairPage/CreateRepairForm";
 import EditClient from "./components/editClient/EditClient";
+import RepairsPage from "./pages/repairsPage/RepairsPage";
+import BrandsPage from "./pages/brandsPage/BrandsPage";
 import {UserContext} from "./context/UserContext";
 import {AddressContext} from "./context/AddressContext";
 import {selectedUserContext} from "./context/selectedUser";
@@ -44,11 +46,13 @@ function App() {
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/myRepairs" component={StartPage}/>
                         <Route path="/register" component={RegisterPage}/>
+                        <Route path="/reparaties" component={RepairsPage}/>
+                        <Route path="/merken" component={BrandsPage}/>
                         <AddressContext.Provider value={addressValue}>
                             <Route path="/profile" component={ProfilePage}/>
                             <selectedUserContext.Provider value={selectedUserValue}>
                                 <Route path="/klanten" component={ClientsPage}/>
-                                <Route path="/klant" component={EditClient} />
+                                <Route path="/klant" component={EditClient}/>
                             </selectedUserContext.Provider>
                         </AddressContext.Provider>
                         <Route path="/createRepair" component={CreateRepairForm}/>
@@ -56,7 +60,6 @@ function App() {
                 </Switch>
             </AnimatePresence>
         </Router>
-
     );
 }
 

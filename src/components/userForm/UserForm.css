@@ -14,8 +14,8 @@
     display:grid;
     grid-template-columns: max-content max-content;
     grid-gap:5px;
-    max-width: 50vw;
-    margin: 1rem auto auto 22vw;
+    max-width: 20vw;
+    margin: 1rem 20vw auto -10vw;
 }
 
 .profileForm label {

@@ -1,0 +1,50 @@
+.repairsContainer {
+    margin: 2vh 2vh auto 20vw;
+}
+
+.repair {
+    font-family: Avenir, sans-serif;
+    color: #0B2545;
+    border-bottom: 1px solid #0B2545;
+    display: flex;
+}
+
+.repair p {
+    padding-top: 0.3rem;
+    min-width: 23%;
+}
+
+.info {
+    background-color: #EEF4ED;
+    color: #6496c1;
+    width: 1rem;
+    border: none;
+    font-size: 1.3rem;
+    min-width: 23%;
+}
+
+.info:hover {
+    color: #0B2545;
+    cursor: pointer;
+}
+
+.Klaar::before,
+.Open::before {
+    content: ' ';
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.8rem;
+    border: 1px solid #000;
+    border-radius: 0.8rem;
+ }
+.Klaar::before {
+    background-color: mediumseagreen;
+}
+
+.Open::before {
+    background-color: #FFB161;
+}
+
+
+

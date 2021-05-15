@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 import {Link, useHistory} from "react-router-dom";
 import {useForm} from 'react-hook-form';
 import "./RegisterPage.css"
-import logo from "../LoginPage/KitereparatieLogo-Kleur.png";
+import logo from "../loginPage/KitereparatieLogo-Kleur.png";
 
 const RegisterPage = () => {
     const {handleSubmit, register, formState: {errors}} = useForm();
