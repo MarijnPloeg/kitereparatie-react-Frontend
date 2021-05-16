@@ -2,49 +2,114 @@
     margin: 2vh 2vh auto 20vw;
 }
 
+.repairsList {
+    display: grid;
+}
+
 .repair {
+    background-color: #ffffff;
+    width: 25vw;
+    height: 25vh;
     font-family: Avenir, sans-serif;
+    border: 1px solid #0B2545;
+    margin: 1rem;
+    box-shadow: 5px 5px 27px 5px rgba(0, 0, 0, 0.15);
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "repairType repairStatus"
+    "repairNote ."
+    "repairBrand . "
+    "repairModel repairDateIn"
+    "repairSize repairDateOut"
+    "repairRelations repairRelations";
+}
+
+.repairType {
+    padding: 1rem 0 0 1rem;
     color: #0B2545;
-    border-bottom: 1px solid #0B2545;
+    grid-area: repairType;
+}
+
+.repairNote {
+    font-size: 14px;
+    margin-top: -1rem;
+    padding-left: 1rem;
+    grid-area: repairNote;
+}
+
+p span {
+    font-weight: bold;
+}
+
+.repairBrand,
+.repairModel,
+.repairSize,
+.repairDateIn,
+.repairDateOut {
+    font-size: 14px;
+    padding: 0 1rem;
+}
+
+.repairBrand {
+    margin-top: 0.5rem;
+    grid-area: repairBrand;
+}
+
+.repairModel {
+    grid-area: repairModel;
+}
+
+.repairSize {
+    grid-area: repairSize;
+}
+
+.repairDateIn {
+    grid-area: repairDateIn;
+}
+
+.repairDateOut {
+    grid-area: repairDateOut;
+}
+
+.Klaar,
+.Open {
+    grid-area: repairStatus;
+    width: 5rem;
+    height: 3rem;
+    margin: 1rem 2rem auto auto;
+    border: 1px solid #0B2545;
+    font-size: 1rem;
+    font-style: oblique;
+    color: #0B2545;
+}
+
+.Klaar {
+    background-color: #9CEA99;
+
+}
+
+.Open {
+    background-color: #FFEF9A;
+}
+
+.Klaar:hover,
+.Open:hover {
+   cursor: initial;
+}
+
+.repairRelations {
+    grid-area: repairRelations;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #0B2545;
+    margin-top: 0.5rem;
 }
 
-.repair p {
-    padding-top: 0.3rem;
-    min-width: 23%;
+.repairRelations p {
+    font-size: 12px;
+    margin: 0.5rem;
 }
-
-.info {
-    background-color: #EEF4ED;
-    color: #6496c1;
-    width: 1rem;
-    border: none;
-    font-size: 1.3rem;
-    min-width: 23%;
-}
-
-.info:hover {
-    color: #0B2545;
-    cursor: pointer;
-}
-
-.Klaar::before,
-.Open::before {
-    content: ' ';
-    display: inline-block;
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-right: 0.8rem;
-    border: 1px solid #000;
-    border-radius: 0.8rem;
- }
-.Klaar::before {
-    background-color: mediumseagreen;
-}
-
-.Open::before {
-    background-color: #FFB161;
-}
-
-
 

@@ -1,0 +1,54 @@
+
+.brand {
+    background-color: #ffffff;
+    width: 20rem;
+    height: 7rem;
+    border-radius: 1rem;
+    border: 1px solid #0B2545;
+    display: grid;
+    grid-template-columns: 12rem 5rem;
+    grid-template-rows: 50%;
+    grid-template-areas:
+    "name edit"
+    "type edit";
+    margin: 1rem;
+}
+
+.brandName {
+    grid-area: name;
+    color: #0B2545;
+    font-family: Avenir, sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 1rem auto .2rem 1rem;
+}
+
+.brandType {
+    grid-area: type;
+    color: #134074;
+    font-family: Avenir, sans-serif;
+    margin: .2rem auto auto 1rem;
+}
+
+.editBrand {
+    grid-area: edit;
+    height: 5rem;
+    width: 5rem;
+    font-size: 2rem;
+    margin: 1rem auto auto 2rem;
+    color: #0B2545;
+    background-color: #ffffff;
+    border: none;
+}
+
+.editBrand:hover {
+    color: #8DA9C4;
+    cursor: pointer;
+}
+
+.brand:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 10px 10px 65px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 10px 10px 65px 0px rgba(0,0,0,0.3);
+    box-shadow: 10px 10px 65px 0px rgba(0,0,0,0.3);
+}

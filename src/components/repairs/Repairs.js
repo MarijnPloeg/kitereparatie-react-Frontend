@@ -30,14 +30,14 @@ const Repairs = () => {
     return (
         <div className="repairsContainer">
             <div className="repairsList">
-                <div className="topBar">
-                    <p>Soort reparatie</p>
-                    <p>Ingeleverd op</p>
-                    <p>Ingeleverd door</p>
-                    <p>Status</p>
-                    <input type="text" placeholder="Zoeken..." onfocus="this.placeholder = ''"
-                           onChange={(e) => setSearchTerm(e.target.value)}/>
-                </div>
+                {/*<div className="topBar">*/}
+                {/*    <p>Soort reparatie</p>*/}
+                {/*    <p>Ingeleverd op</p>*/}
+                {/*    <p>Ingeleverd door</p>*/}
+                {/*    <p>Status</p>*/}
+                {/*    <input type="text" placeholder="Zoeken..." onfocus="this.placeholder = ''"*/}
+                {/*           onChange={(e) => setSearchTerm(e.target.value)}/>*/}
+                {/*</div>*/}
                 {repairs.filter(value => {
                     if (searchTerm === "") {
                         return value;
@@ -47,7 +47,7 @@ const Repairs = () => {
                 }).map((val, key) => {
                     console.log("GETTING MAPPED HERE! ",val);
                     return (
-                        <Repair repair={val}/>
+                        <Repair data={val}/>
                     )
                 })}
 
