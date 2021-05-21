@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {IndicationContext} from "../../../../context/IndicationContext";
 
 const FabricRepair = () => {
-    const setIndication = useContext(IndicationContext);
+    const [indication, setIndication] = useContext(IndicationContext);
 
     return (
         <>

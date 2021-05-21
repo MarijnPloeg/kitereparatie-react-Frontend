@@ -4,7 +4,7 @@ import naaimachine from "./images/Naaimachine.jpeg"
 
 const AboutUs = () => {
     return (
-        <div className="aboutUs">
+        <div id="overOns" className="aboutUs">
             <h1>Over ons</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium blanditiis consectetur culpa
                 deserunt dolorem eveniet fugit iste iure, iusto libero maiores necessitatibus nemo non pariatur quae

@@ -5,6 +5,7 @@
 }
 
 .aboutUs {
+    padding-top: 12rem;
     height: 120ch;
 }
 
@@ -13,14 +14,14 @@
     font-family: Avenir, serif;
     color: #134074;
     left: 6rem;
-    top: 75rem;
+    top: 83rem;
 }
 
 .aboutUs p {
     position: absolute;
     font-family: Avenir, serif;
     width: 40%;
-    top: 85rem;
+    top: 90rem;
     left: 6rem;
 }
 

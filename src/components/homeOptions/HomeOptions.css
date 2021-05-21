@@ -10,7 +10,7 @@
     flex-direction: row;
     justify-content: center;
     margin: 4rem;
-    padding-bottom:5rem;
+    padding: 20vh 0 5em 0;
 }
 
 .cardContainer div {

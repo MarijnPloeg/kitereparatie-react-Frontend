@@ -126,7 +126,6 @@ input:focus {
 .calculateCosts {
     position: absolute;
     margin: 110px auto auto -4.7rem;
-    font-family: Avenir, Serif;
     font-size: 1rem;
     color: #134074;
     padding: 0.8rem 2rem 0.8rem 2rem;
@@ -134,6 +133,17 @@ input:focus {
     border-radius: 0.5rem;
 }
 
+#leakIndicator {
+    margin: 2rem;
+    font-family: Avenir, sans-serif;
+    font-size: 1rem;
+    width: 15rem;
+    height: 2rem;
+}
+
+#leakIndicator option {
+    color: #0B2545;
+}
 
 
 

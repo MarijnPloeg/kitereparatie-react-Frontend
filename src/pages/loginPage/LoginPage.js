@@ -23,8 +23,7 @@ const LoginPage = () => {
             }
             console.log(res.status);
         } catch (e) {
-            console.log(e.response);
-            setError(e.response.data);
+            setError(e);
         }
     }
 
@@ -56,7 +55,7 @@ const LoginPage = () => {
                     transition={{duration: .1, ease: "easeInOut"}}
                     exit={{x: 0}}>
             <section className="loginContainer">
-                <Link to="/"><img className="loginLogo" src={logo} alt=""/></Link>
+                <Link to="/home"><img className="loginLogo" src={logo} alt=""/></Link>
                 <h1 className={"loginTitle"}>Welkom terug!</h1>
                 {/*TODO: Login met social media accounts (Google, Apple & FaceBook*/}
                 <p className={"loginText"}>Login met je email adres:</p>

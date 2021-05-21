@@ -1,0 +1,10 @@
+.clientsRepairContainer {
+
+}
+
+.clientsRepairList {
+    list-style: none;
+    position: absolute;
+    margin: 0 auto auto 50vw;
+    font-family: Avenir, sans-serif;
+}

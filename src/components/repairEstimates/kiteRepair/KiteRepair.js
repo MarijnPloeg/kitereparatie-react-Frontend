@@ -9,7 +9,7 @@ import {LeakingKite} from "./kiteRepairTypes/LeakingKite";
 const KiteRepair = () => {
 
     const [type, setType] = useState("")
-    const indication = useContext(IndicationContext);
+    const [indication] = useContext(IndicationContext);
 
     return (
         <div className="form">

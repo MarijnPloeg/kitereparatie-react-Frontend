@@ -11,7 +11,7 @@ import "./HomeOptions.css";
 
 const HomeOptions = () => {
     return(
-        <div className="cardContainer">
+        <div className="cardContainer" id="cardContainer">
             <HomeCard image={barImage} title="Bar reparatie"/>
             <HomeCard image={kiteImage} title="Kite reparatie"/>
             <HomeCard image={boardImage} title="Board reparatie"/>

@@ -38,7 +38,7 @@ const UserForm = (user) => {
             });
             console.log(res);
         } catch (e) {
-            console.log("Error with async function: ", e.response)
+            console.log("Error with async function: ", e)
         }
     }
 

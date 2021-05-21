@@ -6,7 +6,7 @@ import { IndicationProvider} from "../../context/IndicationContext";
 const RepairsAndPricing = () => {
     const [option, setOption] = useState("Kite");
     return (
-        <div className="repairsAndPricingContainer">
+        <div className="repairsAndPricingContainer" id="prices">
             <h1 className="repairTitle">Reparaties en Prijzen</h1>
             <div className="optionContainer">
                 <button className="option" onClick={() => setOption("Kite")}>Kite</button>
