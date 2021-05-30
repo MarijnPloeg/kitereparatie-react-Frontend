@@ -10,11 +10,17 @@ const Repairs = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [repairs, setRepairs] = useState([]);
     const [repairOwner, setRepairOwner] = useState({});
-    const url = "http://localhost:8088/repairs";
+    const apiURL = "http://localhost:8088";
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     async function fetchRepairs() {
         try {
-            const repairsData = await axios.get(url);
+            const repairsData = await authAxios.get("/repairs");
             setRepairs(repairsData.data)
         } catch (e) {
             console.log(e);
@@ -22,22 +28,13 @@ const Repairs = () => {
     }
 
     useEffect(() => {
-        console.log(repairs.data)
-        url && fetchRepairs();
-    }, [url]);
+        apiURL && fetchRepairs();
+    }, [apiURL]);
 
 
     return (
         <div className="repairsContainer">
             <div className="repairsList">
-                {/*<div className="topBar">*/}
-                {/*    <p>Soort reparatie</p>*/}
-                {/*    <p>Ingeleverd op</p>*/}
-                {/*    <p>Ingeleverd door</p>*/}
-                {/*    <p>Status</p>*/}
-                {/*    <input type="text" placeholder="Zoeken..." onfocus="this.placeholder = ''"*/}
-                {/*           onChange={(e) => setSearchTerm(e.target.value)}/>*/}
-                {/*</div>*/}
                 {repairs.filter(value => {
                     if (searchTerm === "") {
                         return value;
@@ -45,12 +42,10 @@ const Repairs = () => {
                         return value;
                     }
                 }).map((val, key) => {
-                    console.log("GETTING MAPPED HERE! ",val);
                     return (
                         <Repair data={val}/>
                     )
                 })}
-
             </div>
         </div>
 

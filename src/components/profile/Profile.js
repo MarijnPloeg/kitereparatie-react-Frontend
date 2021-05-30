@@ -5,54 +5,29 @@ import axios from "axios";
 import {UserContext} from "../../context/UserContext";
 
 const Profile = () => {
-    // const {user} = useContext(UserContext);
-    // const [image, setImage] = useState({
-    //     selectedFiles: "",
-    //     currentFile: undefined,
-    //     progress: 0,
-    //     message: "",
-    //     fileInfos: [],
-    // });
-    //
-    // function selectFile(e) {
-    //     console.log(e.target.files[0])
-    //     setImage({
-    //         selectedFiles: e.target.files,
-    //     })
-    //     upload(user);
-    // }
-    //
-    // function upload(user) {
-    //     let currentFile = image.selectedFiles[0];
-    //     setImage({
-    //         progress: 0,
-    //         currentFile: currentFile
-    //     });
-    //     UploadFilesService.upload(currentFile, (e) => {
-    //         setImage({
-    //             progress: Math.round((100 * e.loaded) / e.total),
-    //         })
-    //     }).then((res) => {
-    //         setImage({
-    //             message: res.data.message
-    //         });
-    //     }).then((files) => {
-    //         setImage({
-    //             fileInfos: files.data
-    //         });
-    //     });
-    // }
-    //
-    // const {selectedFiles, currentFile, progress, message, fileInfos} = image;
     const [image, setImage] = useState();
+    const apiURL = "http://localhost:8088"
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     const onFileChangeHandler = (e) => {
         e.preventDefault();
+        console.log(e);
+        console.log("Image: ",e.target.files[0])
         const formData = new FormData();
         formData.append('file', e.target.files[0]);
-        axios.post('http://localhost:8088/users/upload', formData).then((res) => {
-            console.log(res);
-        })
+        authAxios.post('/users/6/image/upload', formData,
+            {
+                headers: {
+                    "Content-Type" : "multipart/form-data"
+                }
+            }).then((res) => {
+            console.log(res)
+        });
     };
 
 

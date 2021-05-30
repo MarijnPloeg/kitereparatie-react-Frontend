@@ -7,10 +7,17 @@ import axios from "axios";
 
 const Customer = ({name, email, address}) => {
     const {setSelectedUser} = useContext(selectedUserContext);
+    const apiURL = "http://localhost:8088"
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     async function getUser() {
         try {
-            const res = await axios.get(`http://localhost:8088/users/${email}`);
+            const res = await authAxios.get(`/users/${email}`);
             setSelectedUser(res.data);
         } catch (e) {
             console.log(e)

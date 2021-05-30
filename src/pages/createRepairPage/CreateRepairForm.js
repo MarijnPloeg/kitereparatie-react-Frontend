@@ -1,6 +1,7 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {set, useForm} from "react-hook-form";
+import axios from "axios";
 //Styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -10,9 +11,24 @@ import {RepairContext} from "../../context/Repair";
 
 const CreateRepairForm = () => {
     const [repairType, setRepairType] = useState(null);
+    const [brands, setBrands] = useState();
     const {handleSubmit, register} = useForm();
     const repair = useContext(RepairContext);
-    
+    const url = "http://localhost:8088/brands"
+
+    useEffect(() => {
+        fetchBrands();
+    }, []);
+
+    async function fetchBrands() {
+        try {
+            const res = await axios.get(url);
+            console.log(res.data)
+            setBrands(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     function onSubmit(data) {
         console.log(repair);
@@ -83,20 +99,25 @@ const CreateRepairForm = () => {
                         </div>
                         {repairType === "Kite" && (
                             <div className="specificInfo">
-                                <span className="repairTypes">
-                                    <input type="radio" id="Doek" name="selectRepair"
+                                <div className="repairTypes">
+                                    <input type="radio" id="Doek" name="kiteRepair"
                                            value="Doek" {...register("fabric")}/>
                                     <label htmlFor="Doek">Doek</label>
-                                    <input type="radio" id="Lekkage" name="selectRepair"
+                                    <input type="radio" id="Lekkage" name="kiteRepair"
                                            value="Lekkage" {...register("leak")}/>
                                     <label htmlFor="Lekkage">Lekkage</label>
-                                    <input type="radio" id="Bridles" name="selectRepair"
+                                    <input type="radio" id="Bridles" name="kiteRepair"
                                            value="Bridles" {...register("bridles")}/>
                                     <label htmlFor="Bridles">Bridles</label>
-                                    <input type="radio" id="Anders" name="selectRepair"
+                                    <input type="radio" id="Anders" name="kiteRepair"
                                            value="Anders" {...register("different")}/>
                                     <label htmlFor="Anders">Anders</label>
-                                </span>
+                                </div>
+                                {repairType === "bar" && (
+                                    <div className="specificInfo">
+                                        <span>Lekkkages</span>
+                                    </div>
+                                )}
                                 {/*<div className="repairTypes">*/}
                                 {/*    <input type="radio" id="Canope" name="damageType"*/}
                                 {/*           value="Canope" {...register("Canope")}/>*/}

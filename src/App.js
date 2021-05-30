@@ -16,14 +16,14 @@ import BrandsPage from "./pages/brandsPage/BrandsPage";
 import {UserContext} from "./context/UserContext";
 import {AddressContext} from "./context/AddressContext";
 import {selectedUserContext} from "./context/selectedUser";
-import axios from "axios";
 
 function App() {
     const [user, setUser] = useState(null);
     const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
-    const [repair, setRepair] = useState(null);
-    const repairValue = useMemo(() => ({ repair, setRepair }), [repair, setRepair]);
+    // Todo: Implement repair value
+    // const [repair, setRepair] = useState(null);
+    // const repairValue = useMemo(() => ({ repair, setRepair }), [repair, setRepair]);
 
     const [address, setAddress] = useState({address: {}})
     const addressValue = useMemo(() => ({address, setAddress}), [address, setAddress])
@@ -32,7 +32,6 @@ function App() {
     const selectedUserValue = useMemo(() => ({selectedUser, setSelectedUser}), [selectedUser, setSelectedUser])
 
     useEffect(() => {
-        console.log(localStorage.getItem("user"))
         setUser(localStorage.getItem("user"))
     }, []);
 

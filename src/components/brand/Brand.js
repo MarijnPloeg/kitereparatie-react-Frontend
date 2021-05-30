@@ -5,7 +5,7 @@ import "./Brand.css";
 import {useState} from "react";
 
 const Brand = ({id, name, type}) => {
-
+    const apiURL = "http://localhost:8088";
     const [error, setError] = useState("");
 
     let brandType;
@@ -17,14 +17,18 @@ const Brand = ({id, name, type}) => {
         brandType = "Wetsuit brand";
     }
 
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
+
     async function deleteBrand(){
         try {
-            const deletedBrand = await axios.delete(`http://localhost:8088/brands/brand/${id}`);
-            console.log(deletedBrand.data);
+            const deletedBrand = await authAxios.delete(`/brands/brand/${id}`);
         } catch (e) {
-            console.log(e.data);
+            setError(e.message)
         }
-        console.log(id)
     }
 
     return (
@@ -32,7 +36,9 @@ const Brand = ({id, name, type}) => {
             <p className="brandName">{name}</p>
             <p className="brandType">{brandType}</p>
             <button className="editBrand" onClick={deleteBrand}><FontAwesomeIcon icon={faTrash}/></button>
-
+            {/*{ Todo: Show error*/}
+                error
+            }
         </div>
     );
 }

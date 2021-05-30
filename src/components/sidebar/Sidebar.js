@@ -35,7 +35,8 @@ const Sidebar = () => {
                         <Link to="/profile" className="sidebarElement"><FontAwesomeIcon icon={faUser} className="sidebarIcon"/>Mijn profiel</Link>
                         <Link to="/klanten" className="sidebarElement"><FontAwesomeIcon icon={faUsers} className="sidebarIcon"/>Klanten</Link>
                         <Link to="/reparaties" className="sidebarElement"><FontAwesomeIcon icon={faList} className="sidebarIcon"/>Reparaties</Link>
-                        <Link to="/werknemers" className="sidebarElement"><FontAwesomeIcon icon={faUserCheck} className="sidebarIcon"/>Werknemers</Link>
+                        {/*TODO: Add employees*/}
+                        {/*<Link to="/werknemers" className="sidebarElement"><FontAwesomeIcon icon={faUserCheck} className="sidebarIcon"/>Werknemers</Link>*/}
                         <Link to="/merken" className="sidebarElement"><FontAwesomeIcon icon={faGlobe} className="sidebarIcon"/>Merken</Link>
                     </>
                 )}

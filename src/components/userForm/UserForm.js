@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {useForm} from "react-hook-form";
+import {set, useForm} from "react-hook-form";
 import axios from "axios";
 import {AddressContext} from "../../context/AddressContext";
 //Styling
@@ -7,7 +7,15 @@ import "./UserForm.css";
 
 const UserForm = (user) => {
     const {handleSubmit, register} = useForm();
+    const {error, setError} = useForm("");
     const {address, setAddress} = useContext(AddressContext);
+    const apiURL = "http://localhost:8088"
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     function organizeData(data) {
         setAddress({
@@ -18,17 +26,12 @@ const UserForm = (user) => {
             postalCode: data.postalCode,
             streetName: data.streetName
         });
-
          postData(data);
     }
 
     async function postData(data) {
-        console.table("From post",user.user)
-        console.table("From post",address);
-
         try {
-            console.log('Adres: ',address)
-            const res = await axios.post(`http://localhost:8088/users/${user.user.appUserId}/address`, {
+            const res = await authAxios.post(`/users/${user.user.appUserId}/address`, {
                 state: data.state,
                 city: data.city,
                 country: data.country,
@@ -36,13 +39,13 @@ const UserForm = (user) => {
                 postalCode: data.postalCode,
                 streetName: data.streetName
             });
-            console.log(res);
         } catch (e) {
-            console.log("Error with async function: ", e)
+            setError(e.message)
         }
     }
 
     return (
+        //TODO: Show errors
         <>
             <form className="profileForm" onSubmit={handleSubmit(organizeData)}>
                 <label htmlFor="naam">Naam:</label>

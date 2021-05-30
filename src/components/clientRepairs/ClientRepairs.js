@@ -6,12 +6,19 @@ import axios from "axios";
 
 const ClientRepairs = ({user}) => {
     const [customerRepairList, setCustomerRepairList] = useState([]);
-    const url = `http://localhost:8088/repairs/klant/${user.appUserId}`;
+    const apiURL = `http://localhost:8088`;
+
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     async function fetchClientRepairs () {
+        console.log(user)
         try {
-            const res = await axios.get(url)
-            console.log(res.data[0])
+            const res = await authAxios.get(`/repairs/klant/${user.appUserId}`)
             setCustomerRepairList(res.data[0])
         } catch (e) {
             console.log(e);
@@ -19,12 +26,9 @@ const ClientRepairs = ({user}) => {
     }
 
     useEffect(() => {
-        url && fetchClientRepairs();
-    }, [url]);
+        apiURL && fetchClientRepairs();
+    }, [apiURL]);
 
-    function showList() {
-        console.log(customerRepairList)
-    }
 
 
     return (

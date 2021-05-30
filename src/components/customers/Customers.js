@@ -8,20 +8,27 @@ import "./Customers.css";
 const Customers = () => {
     const [customers, setCustomers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const url = "http://localhost:8088/users";
+    const [error, setError] = useState("");
+    const apiURL = "http://localhost:8088";
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
 
     async function fetchCustomers() {
         try {
-            const data = await axios.get(url);
+            const data = await authAxios.get("/users");
             setCustomers(data.data);
         } catch (e) {
-            console.log(e)
+            setError(e.message)
         }
     }
 
     useEffect(() => {
-        url && fetchCustomers();
-    }, [url]);
+        apiURL && fetchCustomers();
+    }, [apiURL]);
 
     return (
         <div className="customersContainer">

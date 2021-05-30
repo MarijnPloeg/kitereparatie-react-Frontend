@@ -10,22 +10,10 @@ import {UserContext} from "../../context/UserContext";
 
 const LoginPage = () => {
     const {handleSubmit, register} = useForm();
-    const {setUser} = useContext(UserContext);
-    const [error, setError] = useState();
     const history = useHistory();
-
-    // Checking if user exists before authenticating the user. This way I can create unique error messages mapped by the back-end
-    async function checkEmail(data) {
-        try {
-            const res = await axios.get(`http://localhost:8088/users/${data.email}`)
-            if (res.status === 200) {
-                await authenticateUser(data);
-            }
-            console.log(res.status);
-        } catch (e) {
-            setError(e);
-        }
-    }
+    const [error, setError] = useState();
+    const apiURL = `http://localhost:8088`
+    const {setUser} = useContext(UserContext);
 
     async function authenticateUser(data) {
         try {
@@ -33,18 +21,29 @@ const LoginPage = () => {
                 email: data.email,
                 password: data.password
             });
-
-            console.log(res)
-
-            const getUser = await axios.get(`http://localhost:8088/users/${data.email}`);
             localStorage.setItem("token", res.data.jwt);
-            localStorage.setItem("user", JSON.stringify(getUser))
-            setUser(getUser.data);
+            //Persist user info
+            await getUser(data.email);
             setTimeout((history.push("/myRepairs"), 5000));
-
         } catch (e) {
-            console.log(e.response);
-            setError(e.response.data);
+            console.log(e)
+            setError(e.message);
+        }
+    }
+
+
+    const authAxios = axios.create({
+        baseURL: apiURL,
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }})
+
+    async function getUser(email) {
+        try {
+            const res = await authAxios.get(`/users/${email}`);
+            setUser(res.data);
+        } catch (e) {
+            setError(e.message)
         }
     }
 
@@ -59,7 +58,7 @@ const LoginPage = () => {
                 <h1 className={"loginTitle"}>Welkom terug!</h1>
                 {/*TODO: Login met social media accounts (Google, Apple & FaceBook*/}
                 <p className={"loginText"}>Login met je email adres:</p>
-                <form onSubmit={handleSubmit(checkEmail)}>
+                <form onSubmit={handleSubmit(authenticateUser)}>
                     <label htmlFor="email">
                         <input
                             type="email"
